@@ -11,7 +11,6 @@ import {
   Settings2,
   User,
 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
@@ -120,7 +119,7 @@ const Sidebar = () => {
           isCollapsed={isSidebarCollapsed}
         />
       </div>
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center mb-6">
         <p className="text-center text-xs text-gray-500">&copy; 2024 Invoria</p>
       </div>
     </div>
