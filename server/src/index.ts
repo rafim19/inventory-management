@@ -7,6 +7,7 @@ import morgan from "morgan";
 import dashboardRoutes from "./routes/dashboardRoutes";
 import productRoutes from "./routes/productRoutes";
 import userRoutes from "./routes/userRoutes";
+import expenseRoutes from "./routes/expenseRoutes";
 
 // Config
 dotenv.config();
@@ -23,6 +24,8 @@ app.use(cors());
 app.use("/dashboard", dashboardRoutes);
 app.use("/products", productRoutes);
 app.use("/users", userRoutes);
+app.use("/expenses", expenseRoutes);
+
 app.get("/hello", (req, res) => {
   res.send("hello world");
 });

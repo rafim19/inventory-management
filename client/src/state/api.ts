@@ -87,7 +87,12 @@ export interface DashboardMetrics {
 export const api = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL }),
   reducerPath: "api",
-  tagTypes: ["DashboardMetrics", "Products", "Users"],
+  tagTypes: [
+    "DashboardMetrics",
+    "Products",
+    "Users",
+    "ExpenseByCategorySummary",
+  ],
   endpoints: (build) => ({
     getDashboardMetrics: build.query<DashboardMetrics, void>({
       query: () => "/dashboard",
@@ -112,6 +117,10 @@ export const api = createApi({
       query: () => "/users",
       providesTags: ["Users"],
     }),
+    getExpenseByCategorySummary: build.query<ExpenseByCategorySummary[], void>({
+      query: () => "/expenses",
+      providesTags: ["ExpenseByCategorySummary"],
+    }),
   }),
 });
 
@@ -120,4 +129,5 @@ export const {
   useGetProductsQuery,
   useCreateProductsMutation,
   useGetUsersQuery,
+  useGetExpenseByCategorySummaryQuery,
 } = api;
