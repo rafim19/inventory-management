@@ -11,19 +11,19 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   );
   const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
 
-  useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.add("light");
-    }
-  });
+  // useEffect(() => {
+  //   if (isDarkMode) {
+  //     document.documentElement.classList.add("dark");
+  //   } else {
+  //     document.documentElement.classList.add("light");
+  //   }
+  // });
 
   return (
     <div
       className={`${
         isDarkMode ? "dark" : "light"
-      }flex w-full min-h-screen bg-gray-50 text-gray-900`}
+      } flex w-full min-h-screen bg-gray-50 text-gray-900`}
     >
       <Sidebar />
       <main

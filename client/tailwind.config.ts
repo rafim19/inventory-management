@@ -3,59 +3,67 @@ import { createThemes } from "tw-colors";
 import colors from "tailwindcss/colors";
 
 const baseColors = [
-    "gray",
-    "red",
-    "yellow",
-    "green",
-    "blue",
-    "indigo",
-    "purple",
-    "pink",
+  "gray",
+  "red",
+  "yellow",
+  "green",
+  "blue",
+  "indigo",
+  "purple",
+  "pink",
 ];
 
-const shadeMapping = {
-    /* 
-        Structure of the mapping
-        lightTheme: darkTheme
-    */
-    "50": "900",
-    "100": "800",
-    "200": "700",
-    "300": "600",
-    "400": "500",
-    "500": "400",
-    "600": "300",
-    "700": "200",
-    "800": "100",
-    "900": "50",
+interface shadeMappingType {
+  [key: string]: string; // All string keys map to number values
+}
+
+const shadeMapping: shadeMappingType = {
+  /* 
+    Structure of the mapping
+    lightTheme: darkTheme
+  */
+  "50": "900",
+  "100": "800",
+  "200": "700",
+  "300": "600",
+  "400": "500",
+  "500": "400",
+  "600": "300",
+  "700": "200",
+  "800": "100",
+  "900": "50",
 };
 
-const generateThemeObject = (colors: any, mapping: Object, invert = false) => {
-    const theme: any = {};
-    baseColors.forEach((color) => {
-        theme[color] = {};
-        Object.keys(mapping).forEach(([key, value]: any) => {
-            const shadeKey = invert ? value : key;
-            theme[color][key] = colors[color][shadeKey];
-        });
+const generateThemeObject = (
+  colors: any,
+  mapping: shadeMappingType,
+  invert = false
+) => {
+  const theme: any = {};
+  baseColors.forEach((color) => {
+    theme[color] = {};
+    Object.keys(mapping).forEach((key, rawIndex) => {
+      const shadeKey = invert ? mapping[key] : key;
+      theme[color][key] = colors[color][shadeKey];
     });
-    return theme;
+  });
+  return theme;
 };
 
 const lightTheme = generateThemeObject(colors, shadeMapping);
 const darkTheme = generateThemeObject(colors, shadeMapping, true);
 
 const themes = {
-    light: {
-        ...lightTheme,
-        white: "#ffffff"
-    },
-    dark: {
-        ...darkTheme,
-        white: colors.gray["950"],
-        black: colors.gray["50"],
-    },
-}
+  light: {
+    ...lightTheme,
+    white: "#ffffff",
+  },
+  dark: {
+    ...darkTheme,
+    white: colors.gray["950"],
+    black: colors.gray["50"],
+  },
+};
 
 const config: Config = {
   darkMode: "class",
@@ -67,9 +75,9 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-radial": "radial-gradient(var(--twc-gradient-stops))",
         "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+          "conic-gradient(from 180deg at 50% 50%, var(--twc-gradient-stops))",
       },
     },
   },
