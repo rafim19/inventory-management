@@ -1,6 +1,6 @@
 import { useGetDashboardMetricsQuery } from "@/state/api";
 import { TrendingUp } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Bar,
   BarChart,
@@ -23,7 +23,7 @@ const CardSalesSummary = () => {
   const averageChangePercentage =
     salesSummary.reduce(
       (acc, curr, _, array) => acc + curr.changePercentage! / array.length,
-      0
+      0,
     ) || 0;
 
   const highestValueData = salesSummary.reduce((acc, curr) => {
@@ -41,14 +41,6 @@ const CardSalesSummary = () => {
   if (isError) {
     return <div className="m-5">Failed to fetch data</div>;
   }
-
-  //   useEffect(() => {
-  //     console.info("isLoading:", isLoading);
-  //     console.info("data:", data);
-  //     console.info("salesSummary:", salesSummary);
-  //     console.info("totalValueSum:", totalValueSum);
-  //     console.info("averageChangePercentage:", averageChangePercentage);
-  //   }, [data]);
 
   return (
     <div className="bg-white rounded-2xl shadow-md flex flex-col justify-between row-span-3 xl:row-span-6">

@@ -7,6 +7,7 @@ type ProductFormData = {
   price: number;
   stockQuantity: number;
   rating: number;
+  createdBy: string;
 };
 
 type Props = {
@@ -22,6 +23,7 @@ const CreateProductModal = ({ isOpen, onClose, onCreate }: Props) => {
     price: 0,
     stockQuantity: 0,
     rating: 0,
+    createdBy: "developer", // TODO: Nanti Ganti kalau sudah ada authentication
   });
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

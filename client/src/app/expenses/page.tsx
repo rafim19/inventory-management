@@ -4,7 +4,7 @@ import {
   ExpenseByCategorySummary,
   useGetExpenseByCategorySummaryQuery,
 } from "@/state/api";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Header from "@/app/(components)/Header";
 import {
   Cell,
@@ -69,7 +69,7 @@ const Expenses = () => {
         if (!acc[data.category]) {
           acc[data.category] = { name: data.category, amount: 0 };
           acc[data.category].color = `#${Math.floor(
-            Math.random() * 16777215
+            Math.random() * 16777215,
           ).toString(16)}`;
         }
         acc[data.category].amount += amount;
@@ -169,7 +169,7 @@ const Expenses = () => {
                         index === activeIndex ? "rgb(29, 78, 216)" : entry.color
                       }
                     ></Cell>
-                  )
+                  ),
                 )}
               </Pie>
               <Tooltip />

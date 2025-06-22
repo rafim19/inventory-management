@@ -16,7 +16,7 @@ const Products = () => {
     price: number;
     stockQuantity: number;
     rating: number;
-    createdBy: "developer"; // TODO: Nanti Ganti kalau sudah ada authentication
+    createdBy: string;
   };
 
   const {
