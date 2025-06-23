@@ -2,7 +2,6 @@ services:
   postgres:
     image: postgres:17.5
     restart: always
-    # set shared memory limit when using docker compose
     shm_size: 128mb
     environment:
       POSTGRES_PASSWORD: l0c@l-docker
@@ -10,12 +9,5 @@ services:
       - 5432:5432
     volumes:
       - postgres-db:/var/lib/postgresql/data
-
 volumes:
   postgres-db:
-
-  # adminer:
-  #   image: adminer
-  #   restart: always
-  #   ports:
-  #     - 8080:8080
